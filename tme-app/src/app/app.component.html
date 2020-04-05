@@ -1,0 +1,81 @@
+<!-- Toolbar -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <figure class="image center">
+        <img
+          src="https://img.icons8.com/plasticine/100/000000/flickr.png"
+          style="max-width: 50px;"
+        />
+      </figure>
+      <p class="is-size-5 has-text-centered">
+        Welcome to Flickr Search App
+      </p>
+      <div class="columns is-mobile is-centered search">
+        <div class="column is-half">
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="text"
+                placeholder="Search for photos"
+                [(ngModel)]="searchbox"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="faSearch"></fa-icon>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="column is-narrow">
+          <button class="button is-success" (click)="searchPhotos()">
+            <span class="icon is-small">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </span>
+            <span>Search</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Toolbar -->
+
+<!-- .section -->
+<section class="section has-background-light">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div
+        class="column is-one-third"
+        *ngFor="let result of $searchResult | async"
+      >
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="{{ result.photo }}" alt="Placeholder image" />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img
+                    src="https://bulma.io/images/placeholders/96x96.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{ result.title }}</p>
+                <p class="subtitle is-6">{{ result.owner }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.section -->
+
+<router-outlet></router-outlet>

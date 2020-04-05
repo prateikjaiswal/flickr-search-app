@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  tme-api:
+    image: tme-api
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    env_file:
+      - tme-api/src/env/.env
